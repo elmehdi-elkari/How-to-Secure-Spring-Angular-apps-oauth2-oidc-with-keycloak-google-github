@@ -79,6 +79,7 @@ public class SecurityConfig {
     private List<SimpleGrantedAuthority> mapAuthorities(final Map<String, Object> attributes) {
         final Map<String, Object> realmAccess = ((Map<String, Object>)attributes.getOrDefault("realm_access", Collections.emptyMap()));
         final Collection<String> roles = ((Collection<String>)realmAccess.getOrDefault("roles", Collections.emptyList()));
+        System.out.println("roles\n "+roles.toString());
         return roles.stream()
                 .map((role) -> new SimpleGrantedAuthority(role))
                 .toList();
